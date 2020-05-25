@@ -1,0 +1,89 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <button
+      mat-menu-item
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <!-- application identifier-->
+
+
+      <span>STAPLER</span>
+      <!-- Fill space to force button alignement to the right-->
+      <span class="fill-space"></span>
+      <!-- Menu and access for account management - login/logout/register/settings-->
+      <span>
+        <button mat-icon-button [matMenuTriggerFor]="accountMenu" aria-label="User access">
+          <!-- there should be a better way to do this-->
+          <mat-icon *ngIf="this.auth.isLoggedIn()" color="green">account_circle</mat-icon>
+          <mat-icon *ngIf="!this.auth.isLoggedIn()" color="warn">account_circle</mat-icon>
+        </button>
+    </span>
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item
+        *ngIf="!this.auth.isLoggedIn()"
+        [routerLink]="['/user/login']"
+        routerLinkActive="router-link-active">
+          <mat-icon>input</mat-icon>
+          <span>Login</span>
+        </button>
+        <button mat-menu-item
+        *ngIf="!this.auth.isLoggedIn()"
+        [routerLink]="['/user/register']"
+        routerLinkActive="router-link-active">
+          <mat-icon>person_add</mat-icon>
+          <span>Sign in</span>
+        </button>
+
+        <button mat-menu-item
+          *ngIf="this.auth.isLoggedIn()"
+          (click)="onLogoutClick()"
+        >
+          <mat-icon>close</mat-icon>
+          <span>Logout</span>
+        </button>
+        <button mat-menu-item
+        *ngIf="this.auth.isLoggedIn()"
+        [routerLink]="['/user/settings']"
+        routerLinkActive="router-link-active">
+          <mat-icon>settings</mat-icon>
+          <span>Setting</span>
+        </button>
+        <button mat-menu-item
+        *ngIf="this.auth.isLoggedIn()"
+        [routerLink]="['/user/profile']"
+        routerLinkActive="router-link-active">
+          <mat-icon>perm_identity</mat-icon>
+          <span>Profile</span>
+        </button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+
+    <router-outlet></router-outlet>
+    <div> credits - legal </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
