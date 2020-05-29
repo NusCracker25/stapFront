@@ -3,6 +3,4 @@ export class User {
   name: string;
   username: string;
   password: string;
-  // plan: Integer;
-
 }
