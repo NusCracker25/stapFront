@@ -15,7 +15,7 @@ export class LoginComponent {
     username: [null, Validators.required],
     password:  [null, Validators.required] });
 
-  hasUnitNumber = false;
+ hidePassword = true;
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
@@ -25,21 +25,18 @@ export class LoginComponent {
               ) {}
 
   onSubmit() {
-    this.logger.debug(' hits submit button');
-    this.logger.error(' hits submit button');
-    this.logger.fatal(' hits submit button');
-    this.logger.info(' hits submit button');
-    this.logger.log(' hits submit button');
-    this.logger.trace(' hits submit button');
-    // finer understanding of observable pipe, map is required here to register to the service.
+    this.logger.info('Submit logging information: ',this.loginForm.value);
+    // finer understanding of observable pipe, map is required here to register to the service
+    // this will secure the usage of below isLogged as is logged should be an observable.
     this.auth.login(this.loginForm.value);
     if (this.auth.isLoggedIn()) {
       this.snackBar.open('You are now logged in as ' + this.auth.currentUser.username );
+    } else{
+      this.snackBar.open('Your authentication failed, please check your username and your password.' );
     }
   }
 
   onCancel(){
-    this.snackBar.open('hits cancel button');
     this.router.navigate(['/home']);
   }
 }

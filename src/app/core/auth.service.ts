@@ -1,3 +1,4 @@
+import { NGXLogger } from 'ngx-logger';
 import { environment } from '@environments/environment';
 import { User } from './model/user';
 import { Injectable } from '@angular/core';
@@ -22,7 +23,8 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    public router: Router
+    public router: Router,
+    private logger: NGXLogger
   ) { }
 
   /**
@@ -42,7 +44,7 @@ export class AuthService {
    */
   login(user: User) {
     // works out the object to be used for request to comply with expected structure {'username':'username', password:'password'}
-    console.log('login with ', user);
+    this.logger.info('authenticate with ', user)
     const userR = {
       username: user.username,
       password: user.password
@@ -52,12 +54,14 @@ export class AuthService {
     return this.httpClient.post<any>(url, userR)
       .subscribe((res: any) => {
         if (res.sucess){
+          this.logger.info('User is authenticated ', res.user.username);
           localStorage.setItem('access_token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
           this.currentUser = res.user;
           this.router.navigate(['/user/profile/']);
         } else{
-        this.router.navigate(['/user/login']); // then navigate back to login page which will be reloaded
+          this.logger.error('Authentication failed');
+          this.router.navigate(['/user/login']); // then navigate back to login page which will be reloaded
         }
       });
   }

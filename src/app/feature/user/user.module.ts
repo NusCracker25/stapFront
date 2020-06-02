@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginComponent } from './login/login.component';
+import { PasswordValidatorDirective } from './password-validator.directive';
 
 
 
@@ -22,6 +23,6 @@ import { LoginComponent } from './login/login.component';
     CoreModule
   ],
   providers: [AuthGuard],
-  declarations: [RegisterComponent, ProfileComponent, SettingsComponent, LoginComponent]
+  declarations: [RegisterComponent, ProfileComponent, SettingsComponent, LoginComponent, PasswordValidatorDirective]
 })
 export class UserModule { }

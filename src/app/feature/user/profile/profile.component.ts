@@ -1,8 +1,14 @@
-import { User } from './../../../core/model/user';
-import { AuthService } from 'src/app/core/auth.service';
+/* standard angular pacckages */
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+/* external packages */
+import { NGXLogger } from 'ngx-logger';
+
+/* app specific packages */
+import { User } from '@core/model/user';
+import { AuthService } from '@core/auth.service';
 
 @Component({
   selector: 'stap-profile',
@@ -11,37 +17,84 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class ProfileComponent implements OnInit{
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
-  });
-
-  hasUnitNumber = false;
 
   currentUser: User;
 
+  profileForm: FormGroup;
+
+  canEdit = false;
+
+
   constructor(private fb: FormBuilder,
               public auth: AuthService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private logger: NGXLogger) {
   }
 
   ngOnInit(){
-    // const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.auth.getUserProfile().subscribe(res => {
+    // creates the form
+    this.initForm();
+    this.subscribeUser();
+    // register to enable/disable switch
+    this.onChanges();
+  }
+
+  /**
+   * follow up with user info
+   */
+  subscribeUser(){
+   // const id = this.activatedRoute.snapshot.paramMap.get('id');
+   this.auth.getUserProfile().subscribe(res => {
       this.currentUser = res.user;
+      this.profileForm.get('canEdit').setValue(this.canEdit);
+      this.profileForm.get('firstName').setValue(this.currentUser.firstName);
+      this.profileForm.get('lastName').setValue(this.currentUser.lastName);
+      this.profileForm.get('username').setValue(this.currentUser.username);
+      this.profileForm.get('email').setValue(this.currentUser.email);
+      this.profileForm.get('plan').setValue(this.currentUser.plan);
+    });
+  }
+
+  /**
+   * initialize the form itself
+   */
+  initForm(){
+    this.profileForm = this.fb.group({
+      canEdit: [null],
+      firstName: [{enabled: this.canEdit}, Validators.required],
+      lastName: [{enabled: this.canEdit}, Validators.required],
+      username: [{enabled: this.canEdit}, Validators.required],
+      email: [{enabled: this.canEdit}, [Validators.required, Validators.email]],
+      plan: ['free', Validators.required]
+    });
+  }
+
+  /**
+   *  observes the changes on "canEdit" then update form accordingly
+   */
+  onChanges() {
+    this.profileForm.get('canEdit').valueChanges
+    .subscribe(editable => {
+        if (editable) {
+            this.profileForm.get('firstName').enable();
+            this.profileForm.get('lastName').enable();
+            this.profileForm.get('username').enable();
+            this.profileForm.get('email').enable();
+            this.profileForm.get('plan').enable();
+            this.canEdit = true;
+        }
+        else {
+          this.profileForm.get('firstName').disable();
+          this.profileForm.get('lastName').disable();
+          this.profileForm.get('username').disable();
+          this.profileForm.get('email').disable();
+          this.profileForm.get('plan').disable();
+          this.canEdit = false;
+        }
     });
   }
 
   onSubmit() {
-    alert('Thanks!');
+    this.logger.info('Form is submitted ' + this.profileForm.value);
   }
 }
