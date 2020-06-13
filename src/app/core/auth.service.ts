@@ -44,7 +44,7 @@ export class AuthService {
    */
   login(user: User) {
     // works out the object to be used for request to comply with expected structure {'username':'username', password:'password'}
-    this.logger.info('authenticate with ', user)
+    this.logger.info('authenticate with ', user);
     const userR = {
       username: user.username,
       password: user.password

@@ -1,0 +1,23 @@
+
+<button mat-icon-button [matMenuTriggerFor]="msgMenu" aria-label="Message access" id="message">
+  <!-- there should be a better way to do this-->
+  <mat-icon *ngIf="this.auth.isLoggedIn()" color="green">chat</mat-icon>
+  <mat-icon *ngIf="!this.auth.isLoggedIn()" color="warn">chat</mat-icon>
+</button>
+
+<mat-menu #msgMenu="matMenu" >
+  <button
+    mat-menu-item (click)="this.openDialog()"
+    matTooltip="Open messages window"
+    >
+   <mat-icon>chat_bubble_outline</mat-icon>
+  </button>
+  <button
+    mat-menu-item
+    (click)="this.newMessageNotification = !this.newMessageNotification"
+    matTooltip="Enable/Disable notification"
+    >
+    <mat-icon *ngIf="this.newMessageNotification">notifications</mat-icon>
+    <mat-icon *ngIf="!this.newMessageNotification" color="warn">notifications_off</mat-icon>
+  </button>
+</mat-menu>

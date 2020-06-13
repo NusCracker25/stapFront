@@ -26,7 +26,7 @@ import { LoggerModule , NgxLoggerLevel } from 'ngx-logger';
                            disableConsoleLogging: false,
                            colorScheme: ['purple', 'teal', 'gray', 'gray', 'red', 'red', 'red']
 
-                        }),
+                        })
   ],
   exports: [
     RouterModule,

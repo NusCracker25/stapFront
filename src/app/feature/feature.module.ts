@@ -1,3 +1,4 @@
+import { ChatModule } from './chat/chat.module';
 import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { HomeComponent } from './home/home.component';
     CommonModule,
     FeatureRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ChatModule
   ]
 
 })
