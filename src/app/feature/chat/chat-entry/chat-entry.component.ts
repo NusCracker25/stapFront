@@ -45,7 +45,7 @@ export class ChatEntryComponent implements OnInit {
               horizontalPosition: this.horPos
             }
           );
-          snackBarRef.onAction().subscribe(() =>{
+          snackBarRef.onAction().subscribe(() => {
             this.openDialog();
           });
         }
