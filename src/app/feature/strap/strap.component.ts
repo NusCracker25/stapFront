@@ -1,3 +1,4 @@
+import { ThemeService } from './../../shared/services/theme.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../core/auth.service';
 
@@ -19,13 +20,18 @@ export class StrapComponent implements OnInit{
       shareReplay()
     );
 
+  isThemeDark: Observable<boolean>;
+
+
   constructor(private breakpointObserver: BreakpointObserver,
               public auth: AuthService,
-              private router: Router
+              private router: Router,
+              private theme: ThemeService
               ) {}
 
 ngOnInit(){
   this.auth.logout();
+  this.isThemeDark = this.theme.isThemeDark;
 }
 
   /* isLoggedIn(): boolean {
@@ -36,4 +42,12 @@ ngOnInit(){
     this.auth.logout();
     this.router.navigate(['/home']);
   }
+
+  /**
+   * dynamically changes the theme for the application
+   */
+  onChangeTheme(checked: boolean){
+    this.theme.setTheme(checked);
+  }
+
 }

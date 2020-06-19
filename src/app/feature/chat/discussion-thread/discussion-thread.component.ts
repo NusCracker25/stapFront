@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'stap-discussion-thread',
   templateUrl: './discussion-thread.component.html',
-  styleUrls: ['./discussion-thread.component.sass']
+  styleUrls: ['./discussion-thread.component.scss']
 })
 export class DiscussionThreadComponent implements OnInit {
 

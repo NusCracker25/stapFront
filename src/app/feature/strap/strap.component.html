@@ -1,3 +1,4 @@
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -27,10 +28,15 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+
+
+
       <!-- application identifier-->
-
-
       <span>STAPLER</span>
+
+<!-- switch theme-->
+
+
       <!-- Fill space to force button alignement to the right-->
       <span class="fill-space"></span>
       <!-- Menu and access for account management - login/logout/register/settings-->
@@ -41,6 +47,11 @@
           <mat-icon *ngIf="!this.auth.isLoggedIn()" color="warn">account_circle</mat-icon>
         </button>
     </span>
+    <mat-slide-toggle
+      [checked]="isThemeDark | async"
+      (change)="onChangeTheme($event.checked)"
+      >Dark theme</mat-slide-toggle
+    >
       <mat-menu #accountMenu="matMenu">
         <button mat-menu-item
         *ngIf="!this.auth.isLoggedIn()"
@@ -82,8 +93,12 @@
 
     </mat-toolbar>
 
+    <div [ngClass]="{'dark-theme': isThemeDark | async}">
+      <div class="mat-app-background">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
 
-    <router-outlet></router-outlet>
     <div> credits - legal </div>
     <stap-chat-entry></stap-chat-entry>
   </mat-sidenav-content>

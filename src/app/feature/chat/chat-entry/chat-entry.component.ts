@@ -13,7 +13,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angu
 @Component({
   selector: 'stap-chat-entry',
   templateUrl: './chat-entry.component.html',
-  styleUrls: ['./chat-entry.component.sass']
+  styleUrls: ['./chat-entry.component.scss']
 })
 export class ChatEntryComponent implements OnInit {
   newMessage: string;
