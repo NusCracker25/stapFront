@@ -8,6 +8,10 @@ export const environment = {
   chat: {
     url: 'http://localhost',
     port: 4000
+  },
+  tasks: {
+    url: 'http://localhost',
+    port: 3000
   }
 };
 

@@ -1,5 +1,4 @@
 import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
 import { StrapComponent } from './strap/strap.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,6 +15,10 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'todo',
+        loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)
       }
     ]
   }

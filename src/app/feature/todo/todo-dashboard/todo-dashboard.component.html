@@ -1,0 +1,124 @@
+<div class="grid-container">
+  <h1 class="mat-h1">My Tasks</h1>
+  <mat-grid-list cols="4" rowHeight="200px">
+
+    <!-- TOTAL TASKS-->
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Total Tasks
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <h1>{{this.totalCount}}</h1>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+<!--the actual editable list of tasks-->
+    <mat-grid-tile [colspan]="3" [rowspan]="3">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Tasks List
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="task-list">
+          <!-- NEW TASKS-->
+          <div class="task-input">
+          <mat-form-field class="new-task">
+            <mat-label >New Task</mat-label>
+            <input
+              matInput
+              #task
+              maxlength="256"
+              placeholder="feed the cat..."
+              type="text"
+              [(ngModel)]="newTask"
+              (keyup)="$event.keyCode == 13 && addTask()">
+
+            <button mat-button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear" (click)="newTask=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-hint align="start"><strong>Add new task</strong> </mat-hint>
+            <mat-hint align="end">{{task.value.length}} / 256</mat-hint>
+          </mat-form-field>
+          </div>
+          <!-- TASK LIST  -->
+          <div >
+            <cdk-virtual-scroll-viewport itemSize="20" class="task-item">
+              <mat-selection-list  >
+                <mat-list-option *ngFor="let task of taskList" [(selected)]='task.isComplete'>
+                  {{task.title}}
+                </mat-list-option>
+              </mat-selection-list>
+            </cdk-virtual-scroll-viewport>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+<!-- TO DO-->
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            To Do
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <h1>{{this.totalCount}}</h1>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+<!-- Done-->
+<mat-grid-tile colspan="1" rowspan="1">
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>
+        Done
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>
+        <h1>{{this.totalCount}}</h1>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-grid-tile>
+
+
+  </mat-grid-list>
+</div>

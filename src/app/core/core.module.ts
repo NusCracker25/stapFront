@@ -1,3 +1,4 @@
+import { TaskService } from './task.service';
 import { ChatService } from './chat.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from '@environments/environment';
@@ -21,6 +22,7 @@ const config: SocketIoConfig = { url: environment.chat.url + ':' + environment.c
   providers: [
     AuthService,
     ChatService,
+    TaskService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
