@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordValidatorDirective } from './password-validator.directive';
+import { UserEntryComponent } from './user-entry/user-entry.component';
 
 
 
@@ -23,6 +24,15 @@ import { PasswordValidatorDirective } from './password-validator.directive';
     CoreModule
   ],
   providers: [AuthGuard],
-  declarations: [RegisterComponent, ProfileComponent, SettingsComponent, LoginComponent, PasswordValidatorDirective]
+  declarations: [
+    RegisterComponent,
+    ProfileComponent,
+    SettingsComponent,
+    LoginComponent,
+    PasswordValidatorDirective,
+    UserEntryComponent],
+  exports: [
+    UserEntryComponent
+  ]
 })
 export class UserModule { }
