@@ -113,8 +113,7 @@ ngOnInit(){
    * modifies the status for description in trailer
    */
    onChangeDescription(){
-     console.log(' is long description ',this.isDescription$);
-     this.theme.switchDescription();
+    this.theme.switchDescription();
    }
 
 }
