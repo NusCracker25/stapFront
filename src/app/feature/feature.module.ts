@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { ChatModule } from './chat/chat.module';
 import { CoreModule } from './../core/core.module';
 import { SharedModule } from './../shared/shared.module';
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     FeatureRoutingModule,
     SharedModule,
     CoreModule,
-    ChatModule
+    ChatModule,
+    UserModule
   ]
 
 })

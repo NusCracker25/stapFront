@@ -14,7 +14,7 @@ export class TaskService {
 
   /**
    * configuration for server access
-  */
+   */
   API_URL = environment.tasks.url + ':' + environment.tasks.port ;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -23,10 +23,6 @@ export class TaskService {
   count = -1;
 
   /**
-   *
-   * @param httpClient
-   * @param router
-   * @param logger
    */
   constructor(
     private httpClient: HttpClient,
@@ -36,7 +32,7 @@ export class TaskService {
 
   /**
    * fetch to api for adding a task
-   * @param task
+   * @param task - newly created task
    */
   addTask(task: Task): Observable<Task> {
     const url = this.API_URL + '/stap-tasks';
@@ -68,9 +64,9 @@ export class TaskService {
   }
 
   /**
-  *
-  * @param error the error intercepted
-  */
+   *
+   * @param error the error intercepted
+   */
   handleError(error: HttpErrorResponse){
     let msg = '';
     if ( error.error instanceof ErrorEvent){

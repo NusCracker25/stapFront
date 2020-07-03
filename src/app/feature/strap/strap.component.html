@@ -1,175 +1,71 @@
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer
+    #drawer
 
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <button
-      mat-menu-item
-      [routerLink]="['/home']"
-      routerLinkActive="router-link-active">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-      <button
-      mat-menu-item
-      [routerLink]="['/todo']"
-      routerLinkActive="router-link-active">
-      <mat-icon>assignment</mat-icon>
-      <span>Tasks</span>
-    </button>
-    <button
-    mat-menu-item
-    [routerLink]="['/home']"
-    routerLinkActive="router-link-active">
-    <mat-icon>anchor</mat-icon>
-    <span>Stap Ship</span>
-  </button>
-  <button
-  mat-menu-item
-  [routerLink]="['/home']"
-  routerLinkActive="router-link-active">
-  <mat-icon>assignment</mat-icon>
-  <span>Stap Plan</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>table_view</mat-icon>
-<span>Stap Math</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>integration_instructions</mat-icon>
-<span>Stap NoCode</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>view_carousel</mat-icon>
-<span>StapMind</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>assignment</mat-icon>
-<span>Stap Mind3D</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>assignment</mat-icon>
-<span>Stap World</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>all_inbox</mat-icon>
-<span>Stap Mail</span>
-</button>
-<button
-mat-menu-item
-[routerLink]="['/home']"
-routerLinkActive="router-link-active">
-<mat-icon>admin_panel_settings</mat-icon>
-<span>Stap Admin</span>
-</button>
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <div *ngIf="isDescription$ | async; else sIcon">
+      <mat-toolbar>Stapler</mat-toolbar>
+    </div>
+    <ng-template #sIcon>
+      <mat-toolbar> <mat-icon>S</mat-icon> </mat-toolbar>
+    </ng-template>
 
-     <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+
+    <mat-nav-list *ngFor="let entry of entries">
       <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        mat-menu-item
+        routerLink="{{ entry.url }}"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon>{{ entry.icon }}</mat-icon>
+        <span *ngIf="isDescription$ | async">{{ entry.name }}</span>
       </button>
+    </mat-nav-list>
 
 
-
-      <!-- application identifier-->
-      <span>STAPLER</span>
-
-<!-- switch theme-->
-
-
-      <!-- Fill space to force button alignement to the right-->
-      <span class="fill-space"></span>
-      <!-- Menu and access for account management - login/logout/register/settings-->
-      <span>
-        <button mat-icon-button [matMenuTriggerFor]="accountMenu" aria-label="User access">
-          <!-- there should be a better way to do this-->
-          <mat-icon *ngIf="this.auth.isLoggedIn()" color="green">account_circle</mat-icon>
-          <mat-icon *ngIf="!this.auth.isLoggedIn()" color="warn">account_circle</mat-icon>
-        </button>
-    </span>
-    <mat-slide-toggle
-      [checked]="isThemeDark | async"
-      (change)="onChangeTheme($event.checked)"
-      >Dark theme</mat-slide-toggle
-    >
-      <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item
-        *ngIf="!this.auth.isLoggedIn()"
-        [routerLink]="['/user/login']"
-        routerLinkActive="router-link-active">
-          <mat-icon>input</mat-icon>
-          <span>Login</span>
-        </button>
-        <button mat-menu-item
-        *ngIf="!this.auth.isLoggedIn()"
-        [routerLink]="['/user/register']"
-        routerLinkActive="router-link-active">
-          <mat-icon>person_add</mat-icon>
-          <span>Sign in</span>
-        </button>
-
-        <button mat-menu-item
-          *ngIf="this.auth.isLoggedIn()"
-          (click)="onLogoutClick()"
+    <mat-nav-list>
+      <div *ngIf="isDescription$ | async; else rightArrow">
+        <mat-slide-toggle
+          [checked]="isThemeDark$ | async"
+          (change)="onChangeTheme($event.checked)"
         >
-          <mat-icon>close</mat-icon>
-          <span>Logout</span>
+          <span *ngIf="isDescription$ | async"
+            >Dark theme</span
+          ></mat-slide-toggle
+        >
+        <button mat-menu-item (click)="onChangeDescription()">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+          <span>description</span>
         </button>
-        <button mat-menu-item
-        *ngIf="this.auth.isLoggedIn()"
-        [routerLink]="['/user/settings']"
-        routerLinkActive="router-link-active">
-          <mat-icon>settings</mat-icon>
-          <span>Setting</span>
-        </button>
-        <button mat-menu-item
-        *ngIf="this.auth.isLoggedIn()"
-        [routerLink]="['/user/profile']"
-        routerLinkActive="router-link-active">
-          <mat-icon>perm_identity</mat-icon>
-          <span>Profile</span>
-        </button>
-      </mat-menu>
+      </div>
 
-    </mat-toolbar>
-
-    <div [ngClass]="{'dark-theme': isThemeDark | async}">
-      <div class="mat-app-background">
+      <ng-template #rightArrow>
+        <mat-slide-toggle
+          [checked]="isThemeDark$ | async"
+          (change)="onChangeTheme($event.checked)"
+        >
+        </mat-slide-toggle>
+        <button mat-menu-item (click)="onChangeDescription()">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </ng-template>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content >
+    <div
+      class="main_container"
+      [ngClass]="{ 'dark-theme': isThemeDark$ | async }"
+    >
+      <div class="mat-app-background app_panel">
         <router-outlet></router-outlet>
+        <div>credits - legal</div>
+        <stap-user-entry></stap-user-entry>
+        <stap-chat-entry></stap-chat-entry>
       </div>
     </div>
-
-    <div> credits - legal </div>
-    <stap-chat-entry></stap-chat-entry>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>
