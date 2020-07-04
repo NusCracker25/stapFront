@@ -21,7 +21,7 @@
         routerLink="{{ entry.url }}"
         routerLinkActive="router-link-active"
       >
-        <mat-icon>{{ entry.icon }}</mat-icon>
+        <mat-icon matTooltip="{{ entry.name }}">{{ entry.icon }}</mat-icon>
         <span *ngIf="isDescription$ | async">{{ entry.name }}</span>
       </button>
     </mat-nav-list>

@@ -59,6 +59,11 @@ export class StrapComponent implements OnInit{
     },
     {
       url: '/home',
+      name: 'Stap World 3D',
+      icon: 'integration_instructions',
+    },
+    {
+      url: '/home',
       name: 'Stap Mind',
       icon: 'view_carousel',
     },
