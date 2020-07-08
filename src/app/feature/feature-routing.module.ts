@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'todo',
         loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)
+      },
+      {
+        path: 'world3d',
+        loadChildren: () => import('./world3d/world3d.module').then(m => m.World3dModule)
       }
     ]
   }

@@ -61,8 +61,11 @@
       [ngClass]="{ 'dark-theme': isThemeDark$ | async }"
     >
       <div class="mat-app-background app_panel">
-        <router-outlet></router-outlet>
-        <div>credits - legal</div>
+        <div class="legal">credits - legal</div>
+        <div class="app_main">
+          <router-outlet ></router-outlet>
+        </div>
+
         <stap-user-entry></stap-user-entry>
         <stap-chat-entry></stap-chat-entry>
       </div>

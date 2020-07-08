@@ -34,10 +34,11 @@ export class HomeComponent implements OnInit {
       desc: 'a mathematical design sheet with equations and variable'
     },
     {
-      url: '/home',
+      url: '/world3d',
       name: 'Stap World',
       icon: 'table_view',
-      desc: 'a place to create a 3D world... and tools'
+      desc: 'a place to create a 3D world... and tools',
+      img: './assets/img/3dworld.png'
     },
     {
       url: '/home',
