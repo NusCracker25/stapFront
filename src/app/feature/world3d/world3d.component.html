@@ -1,3 +1,19 @@
-<div class="engine-wrapper">
-  <canvas #canvas3D id="canvas3D"></canvas>
+
+<!-- CONTEXTUAL MENU ANCHOR-->
+<div
+  [matMenuTriggerFor]="menu"
+  [style.position]="'absolute'"
+  [style.left.px]="menuX"
+  [style.top.px]="menuY" >
 </div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="menuSelect('Navigate')">Explore</button>
+  <button mat-menu-item (click)="menuSelect('Edit')">Build</button>
+</mat-menu>
+
+
+<!-- DRAWING ZONE -->
+<div class="engine-wrapper" >
+  <canvas #canvas3D id="canvas3D" (click)="onClick()" ></canvas>
+</div>
+

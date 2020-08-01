@@ -1,3 +1,4 @@
+import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import { World3dComponent } from './world3d.component';
   declarations: [World3dComponent],
   imports: [
     CommonModule,
-    World3dRoutingModule
+    World3dRoutingModule,
+    SharedModule
   ]
 })
 export class World3dModule { }

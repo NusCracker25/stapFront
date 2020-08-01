@@ -35,7 +35,8 @@ import { LoggerModule , NgxLoggerLevel } from 'ngx-logger';
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    LoggerModule
   ]
 })
 export class SharedModule { }
