@@ -170,21 +170,7 @@ export class ThreeEngineService implements OnDestroy {
   }
 
   public resize(): void {
-    // todo: behavior on resize is erratic. this must be fixed
-
-    this.logger.error('Begin resize');
-    this.logger.log('canvas width ', this.canvas.width);
-    this.logger.log('canvas height ', this.canvas.height);
-    this.logger.log('canvas client width ', this.canvas.clientWidth);
-    this.logger.log('canvas client height ', this.canvas.clientHeight);
-    this.logger.log('canvas offset width ', this.canvas.offsetWidth);
-    this.logger.log('canvas offset height ', this.canvas.offsetHeight);
-
-    this.logger.log('renderer status ', this.renderer);
-
-    // ...then set the internal size to match
-
-
+   // ...then set the internal size to match
     this.camera.aspect = this.canvas.clientWidth / this.canvas.clientHeight;
    //this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight, true);
     this.renderer.setPixelRatio((this.canvas.clientWidth) / (this.canvas.clientHeight));

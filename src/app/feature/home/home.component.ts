@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
       img: './assets/img/Liste.svg'
     },
     {
-      url: '/home',
+      url: '/ship',
       name: 'Stap Ship',
       icon: 'anchor',
       desc: 'about ship of the line...'

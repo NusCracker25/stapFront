@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'world3d',
         loadChildren: () => import('./world3d/world3d.module').then(m => m.World3dModule)
+      },
+      {
+        path: 'ship',
+        loadChildren: () => import('./ship/ship.module').then(m => m.ShipModule)
       }
     ]
   }

@@ -1,0 +1,17 @@
+<mat-accordion *ngFor="let term of terms">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{term.term}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{term.theme}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div>
+      {{term.definition}}
+    </div>
+  </mat-expansion-panel>
+
+  </mat-accordion>

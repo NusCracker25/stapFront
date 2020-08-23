@@ -38,7 +38,7 @@ export class StrapComponent implements OnInit{
       icon: 'assignment',
     },
     {
-      url: '/home',
+      url: '/ship',
       name: 'Stap Ship',
       icon: 'anchor',
     },

@@ -1,0 +1,390 @@
+<div>
+<form [formGroup]="shipForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="ship-card">
+    <mat-accordion multi="true">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            General Information
+          </mat-panel-title>
+          <mat-panel-description>
+            Ship name and class
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Rank" formControlName="rank">
+                <mat-option
+                  *ngFor="let rank of ranks"
+                  [value]="rank.abbreviation"
+                >
+                  {{ rank.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="shipForm.controls['rank'].hasError('required')">
+                Rank is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Order" formControlName="order">
+                <mat-option
+                  *ngFor="let order of orders"
+                  [value]="order.abbreviation"
+                >
+                  {{ order.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                Order is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Artillery
+          </mat-panel-title>
+          <mat-panel-description>
+            Select artillery
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col">
+
+            <h3>1st Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliber1"/>
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliber1">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                configuration for 1st battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <h3>2nd Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliber2"/>
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliber2">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                configuration for 2nd battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <h3>3rd Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliber3" />
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliber3">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                configuration for 3rd battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <h3>Rear Fort Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliberRF"/>
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliberRF">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                configuration for Rear Fort battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <h3>Front Fort Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliberFF"/>
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliberFF">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['order'].hasError('required')"
+              >
+                configuration for Front Fort battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+
+            <h3>Dunette Battery configuration</h3>
+          </div>
+          <div class="col">
+        <mat-form-field>
+          <mat-label>Canons</mat-label>
+          <input matInput type="number" min="1" formControlName="nCaliberD"/>
+        </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Caliber" formControlName="caliberD">
+                <mat-option
+                  *ngFor="let cal of canonCaliber"
+                  [value]="cal.name"
+                >
+                  {{cal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="shipForm.controls['caliberD'].hasError('required')"
+              >
+                configuration for Dunette battery is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+</div>
+
+<div *ngIf="this.specSheet">
+  <mat-card>
+  <p>spec sheet can be created</p>
+</mat-card>
+
+<mat-card>
+  The length is: {{this.ship.length}}
+</mat-card>
+</div>
+<!-- <form [formGroup]="shipForm" novalidate (ngSubmit)="onSubmit()"></form>
+<mat-card class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>to be deleted</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Company" formControlName="company" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="First name"
+            formControlName="firstName"
+          />
+          <mat-error
+            *ngIf="shipForm.controls['firstName'].hasError('required')"
+          >
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Last name" formControlName="lastName" />
+          <mat-error *ngIf="shipForm.controls['lastName'].hasError('required')">
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <textarea
+            matInput
+            placeholder="Address"
+            formControlName="address"
+          ></textarea>
+          <mat-error *ngIf="shipForm.controls['address'].hasError('required')">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" *ngIf="!hasUnitNumber">
+      <div class="col">
+        <button
+          mat-button
+          type="button"
+          (click)="hasUnitNumber = !hasUnitNumber"
+        >
+          + Add C/O, Apt, Suite, Unit
+        </button>
+      </div>
+    </div>
+    <div class="row" *ngIf="hasUnitNumber">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <textarea
+            matInput
+            placeholder="Address 2"
+            formControlName="address2"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="City" formControlName="city" />
+          <mat-error *ngIf="shipForm.controls['city'].hasError('required')">
+            City is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="State" formControlName="state">
+            <mat-option *ngFor="let rank of ranks" [value]="rank.abbreviation">
+              {{ rank.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="shipForm.controls['rank'].hasError('required')">
+            State is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            #postalCode
+            maxlength="5"
+            placeholder="Postal Code"
+            type="number"
+            formControlName="postalCode"
+          />
+          <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-radio-group formControlName="shipping">
+          <mat-radio-button value="free">Free Shipping</mat-radio-button>
+          <mat-radio-button value="priority"
+            >Priority Shipping</mat-radio-button
+          >
+          <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </mat-card-actions>
+</mat-card>
+ -->

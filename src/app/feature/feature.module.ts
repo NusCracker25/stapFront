@@ -1,3 +1,4 @@
+import { ShipModule } from './ship/ship.module';
 import { UserModule } from './user/user.module';
 import { ChatModule } from './chat/chat.module';
 import { CoreModule } from './../core/core.module';
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     SharedModule,
     CoreModule,
     ChatModule,
-    UserModule
+    UserModule,
+    ShipModule
   ]
 
 })
