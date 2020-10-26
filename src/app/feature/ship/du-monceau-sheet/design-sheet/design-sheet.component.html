@@ -5,7 +5,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            General Information
+            <h2>General Information</h2>
           </mat-panel-title>
           <mat-panel-description>
             Ship name and class
@@ -56,7 +56,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Artillery
+          <h2>Artillery</h2>
           </mat-panel-title>
           <mat-panel-description>
             Select artillery
@@ -100,7 +100,7 @@
           <div class="col">
         <mat-form-field>
           <mat-label>Canons</mat-label>
-          <input matInput type="number" min="1" formControlName="nCaliber2"/>
+          <input matInput type="number" min="0" formControlName="nCaliber2"/>
         </mat-form-field>
           </div>
           <div class="col">
@@ -130,7 +130,7 @@
           <div class="col">
         <mat-form-field>
           <mat-label>Canons</mat-label>
-          <input matInput type="number" min="1" formControlName="nCaliber3" />
+          <input matInput type="number" min="0" formControlName="nCaliber3" />
         </mat-form-field>
           </div>
           <div class="col">
@@ -160,7 +160,7 @@
           <div class="col">
         <mat-form-field>
           <mat-label>Canons</mat-label>
-          <input matInput type="number" min="1" formControlName="nCaliberRF"/>
+          <input matInput type="number" min="0" formControlName="nCaliberRF"/>
         </mat-form-field>
           </div>
           <div class="col">
@@ -190,7 +190,7 @@
           <div class="col">
         <mat-form-field>
           <mat-label>Canons</mat-label>
-          <input matInput type="number" min="1" formControlName="nCaliberFF"/>
+          <input matInput type="number" min="0" formControlName="nCaliberFF"/>
         </mat-form-field>
           </div>
           <div class="col">
@@ -220,7 +220,7 @@
           <div class="col">
         <mat-form-field>
           <mat-label>Canons</mat-label>
-          <input matInput type="number" min="1" formControlName="nCaliberD"/>
+          <input matInput type="number" min="0" formControlName="nCaliberD"/>
         </mat-form-field>
           </div>
           <div class="col">
@@ -252,13 +252,20 @@
 
 </div>
 
+<div>
+  <p></p>
+</div>
+
 <div *ngIf="this.specSheet">
   <mat-card>
   <p>spec sheet can be created</p>
 </mat-card>
-
 <mat-card>
-  The length is: {{this.ship.length}}
+ <mat-card-title> <h2>General information</h2></mat-card-title>
+  The length is: <b>{{this.ship.length}}</b>
+  The width is : <b>{{this.ship.width}}</b>
+
+  She has : <b>{{this.ship.guns}}</b> guns
 </mat-card>
 </div>
 <!-- <form [formGroup]="shipForm" novalidate (ngSubmit)="onSubmit()"></form>

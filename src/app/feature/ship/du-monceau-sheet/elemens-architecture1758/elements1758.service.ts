@@ -63,11 +63,11 @@ export class Elements1758Service {
     sabord : {
       W: 0.86624,
       H: 0.75796,
-      dsab:{
+      dsab: {
         min: 2.21974,
         max: 2.32802
       },
-      hfeuillet:{
+      hfeuillet: {
         B1: 0.62261,
         B2: 0.5414,
       }
@@ -77,11 +77,11 @@ export class Elements1758Service {
     sabord : {
       W: 0.75796,
       H: 0.70382,
-      dsab:{
+      dsab: {
         min: 2.11146,
         max: 2.35509
       },
-      hfeuillet:{
+      hfeuillet: {
         B1: 0.59554,
         B2: 0.48726,
         B3: 0.46019
@@ -92,11 +92,11 @@ export class Elements1758Service {
     sabord : {
       W: 0.73089,
       H: 0.56847,
-      dsab:{
+      dsab: {
         min: 1.8949,
         max: 2.27388
       },
-      hfeuillet:{
+      hfeuillet: {
         B1: 0.5414,
         B2: 0.43312,
         G: 0.43312 // wehn on the gaillard
@@ -107,7 +107,7 @@ export class Elements1758Service {
     sabord : {
       W: 0.64968,
       H: 0.48726,
-      dsab:{
+      dsab: {
         min: 1.84076 ,
         max: 1.8949
       },
@@ -126,7 +126,7 @@ export class Elements1758Service {
         min: 1.84076,
         max: 1.84076
       },
-      hfeuillet:{
+      hfeuillet: {
         B1: 0.37898,
         G: 0.37898
       }

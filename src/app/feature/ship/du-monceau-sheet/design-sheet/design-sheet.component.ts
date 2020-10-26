@@ -82,20 +82,20 @@ canonCaliber = [
     this.ship.rank = this.shipForm.value.rank;
     this.ship.order = this.shipForm.value.order;
 
-    this.ship.caliberB1 = this.shipForm.value.caliber1;
-    this.ship.quantityB1 = this.shipForm.value.nCaliber1;
+    this.ship.armament.caliberB1 = this.shipForm.value.caliber1;
+    this.ship.armament.quantityB1 = this.shipForm.value.nCaliber1;
 
-    this.ship.caliberB2 = this.shipForm.value.caliber2;
-    this.ship.quantityB2 = this.shipForm.value.nCaliber2;
+    this.ship.armament.caliberB2 = this.shipForm.value.caliber2;
+    this.ship.armament.quantityB2 = this.shipForm.value.nCaliber2;
 
-    this.ship.caliberB3 = this.shipForm.value.caliber3;
-    this.ship.quantityB3 = this.shipForm.value.nCaliber3;
+    this.ship.armament.caliberB3 = this.shipForm.value.caliber3;
+    this.ship.armament.quantityB3 = this.shipForm.value.nCaliber3;
 
-    this.ship.caliberRF = this.shipForm.value.caliberRF;
-    this.ship.quantityRF = this.shipForm.value.nCaliberRF;
+    this.ship.armament.caliberRF = this.shipForm.value.caliberRF;
+    this.ship.armament.quantityRF = this.shipForm.value.nCaliberRF;
 
-    this.ship.caliberFF = this.shipForm.value.caliberFF;
-    this.ship.quantityFF = this.shipForm.value.nCaliberFF;
+    this.ship.armament.caliberFF = this.shipForm.value.caliberFF;
+    this.ship.armament.quantityFF = this.shipForm.value.nCaliberFF;
 
     this.ship.caliberD = this.shipForm.value.caliberD;
     this.ship.quantityD = this.shipForm.value.nCaliberD;
@@ -105,9 +105,24 @@ canonCaliber = [
 }
 
 computeShip(): void{
+  this.computeGeneral();
   this.computeLength();
   this.computeWidth();
   this.computeCreux();
+  this.computeUplift();
+  this.computeQueel();
+}
+
+computeGeneral(): void{
+  this.ship.armament.guns =
+   2 * (
+     this.ship.armament.quantityB1
+     + this.ship.armament.quantityB2
+     + this.ship.armament.quantityB3
+     + this.ship.armament.quantityD
+     + this.ship.armament.quantityFF
+     + this.ship.armament.quantityRF
+   );
 }
 
   computeLength(): void{
@@ -176,6 +191,65 @@ computeShip(): void{
   }
 
 computeCreux(): void{
+  /* DHM1758; p 93 for most ship Creux is half the width but for the fregates ans smaller ships where speed prevails */
+  this.ship.creux = this.ship.width / 2;
+}
 
+computeUplift(): void{
+  this.ship.bwdUplift = this.ship.length * 0.005076 / 0.32484; // 2li 3pts per feet of length DHM 1758 p97
+  this.ship.fwdUplift = this.ship.bwdUplift * 0.002256 / 0.02707 ; // 1 li per thumb of backward elevation
+}
+
+computeQueel(): void{
+ /* DHM 1758 p98- 100: élenacment n'est qu'1/12 de la quille" */
+ if ( this.ship.guns >= 60){
+   this.ship.elancement = this.ship.length / 12;
+ } else if ( this.ship.guns >= 40){
+   this.ship.elancement = this.ship.length / 14;
+ } else {
+  this.ship.elancement = this.ship.length / 15;
+ }
+ this.ship.queteEtambot = this.ship.elancement / 6;
+
+ /* we can deduce from the above the length of the queel */
+ this.ship.queelLength = this.ship.length - this.ship.elancement - this.ship.queteEtambot;
+}
+
+computeDifferenceTirantDeau(): void{
+  /* DHM 1758 p103: difference de tirant 3 lignes par pied de longeur de la quille" */
+  this.ship.deltaTirant = this.ship.queelLength * 0.006768 / 0.32484 ;
+}
+
+computeHEtrave(): void{
+  this.ship.hEtrave = this.ship.creux + this.ship.fwdUplift;
+  this.ship.hEtrave += this.ship.firstDeck.height;
+  this.ship.hEtrave += this.ship.geom.tontureBarrotColtis;
+  this.ship.hEtrave += this.ship.secondDeck.thicknessBordage;
+  this.ship.hEtrave += this.ship.secondDeck.height;
+  this.ship.hEtrave += this.ship.tBordageThirdDeck;
+  this.ship.hEtrave += 2 * this.ship.armament.hFeuilletB3;
+  // DHM1758 p109: mais le plus sur est d'établir la hauteur de l'étrave sur langle du beaupré (cela requière d'avoir positionné les mats)
+}
+
+computeEtambot(): void{
+  this.ship.hEtambot = this.ship.creux;
+  this.ship.hEtambot += this.ship.deltaTirant;
+  this.ship.hEtambot += this.ship.bwdUplift;
+  this.ship.hEtambot += this.ship.firstDeck.hBackwardFirstDeck;
+  this.ship.hEtambot += this.ship.secondDeck.thicknessBordage;
+  this.ship.hEtambot -= this.ship.tGouvernail;
+}
+
+computeLisseDeHourdy(): void{
+  /* DHM1758 p111 */
+  this.ship.lisseHourdy.pZ = this.ship.creux;
+  this.ship.lisseHourdy.pZ += this.ship.bwdUplift;
+  this.ship.lisseHourdy.pZ += this.ship.firstDeck.bouge;
+  this.ship.lisseHourdy.pZ += this.ship.firstDeck.thicknessBordage;
+  this.ship.lisseHourdy.pZ += this.ship.firstBattery.hFeuillet;
+  this.ship.lisseHourdy.length = 2 / 3 * this.ship.width;
+  this.ship.lisseHourdy.thickness = this.ship.lisseHourdy.length * 0.013536/0.32484;
+  this.ship.lisseHourdy.width = this.ship.lisseHourdy.thickness;
+  this.ship.lisseHourdy.bouge = this.ship.lisseHourdy.length / 0.32484 * 0.006768;
 }
 }
