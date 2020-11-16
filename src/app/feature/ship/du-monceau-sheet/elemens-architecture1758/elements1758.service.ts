@@ -134,5 +134,12 @@ export class Elements1758Service {
   }
   ];
 
+  ships =[
+    { name: 'L\'Aimable', length: '147 pieds', armamentCaliberB1: 24, armamentQuantityB1: 13, armamentGuns: ''},
+    { name: 'L\'Invincible', length: '144 pieds', armamentCaliberB1: 24, armamentQuantityB1: 13, armamentGuns: '' },
+    { name: 'L\'Achille', length: '145 pieds', armamentCaliberB1: 24, armamentQuantityB1: 13, armamentGuns: '' },
+    { name: 'Le Toulouse', length: '141 pieds', armamentCaliberB1: 24, armamentQuantityB1: 13, armamentGuns: '' },
+    { name: 'L\'Ardent', length: '140 pieds 8 pouces', armamentCaliberB1: 24, armamentQuantityB1: 13, armamentGuns: '' },
+  ]
   constructor() { }
 }

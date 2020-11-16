@@ -14,7 +14,7 @@
 
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <input matInput />
+          <input matInput formControlName="name"/>
         </mat-form-field>
 
         <div class="row">
@@ -257,141 +257,30 @@
 </div>
 
 <div *ngIf="this.specSheet">
-  <mat-card>
-  <p>spec sheet can be created</p>
-</mat-card>
+
 <mat-card>
  <mat-card-title> <h2>General information</h2></mat-card-title>
-  The length is: <b>{{this.ship.length}}</b>
-  The width is : <b>{{this.ship.width}}</b>
+  <div>The length is: <b>{{this.ship.length}} m</b></div>
+  <div>The width is : <b>{{this.ship.width}} m</b></div>
+  <div>Le creux du navire est de:  <b>{{this.ship.creux}} m</b> </div>
 
-  She has : <b>{{this.ship.guns}}</b> guns
+  <mat-card>
+    <div> <canvas>ici on pose un premier jet du dessin du navire</canvas></div>
+  </mat-card>
+
+
+  <div>She has : <b>{{this.ship.armamentGuns}}</b> guns.</div>
+  <div> <b>{{this.ship.crewTotal}}</b> men are serving on board.</div>
 </mat-card>
+
+<mat-card>
+  <mat-card-title>Charpente</mat-card-title>
+  Quille:
+  <li>Elancement: {{this.ship.elancement}} m</li>
+  <li>Quete de l'étambot: {{this.ship.queteEtambot}} m</li>
+  <li>Longueur de la quille: {{this.ship.queelL}} m</li>
+  <li>Hauteur de la quille: {{this.ship.queelH}} m</li>
+  <li>Largeur de la quille: {{this.ship.queelW}} m</li>
+</mat-card>
+
 </div>
-<!-- <form [formGroup]="shipForm" novalidate (ngSubmit)="onSubmit()"></form>
-<mat-card class="shipping-card">
-  <mat-card-header>
-    <mat-card-title>to be deleted</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Company" formControlName="company" />
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            placeholder="First name"
-            formControlName="firstName"
-          />
-          <mat-error
-            *ngIf="shipForm.controls['firstName'].hasError('required')"
-          >
-            First name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Last name" formControlName="lastName" />
-          <mat-error *ngIf="shipForm.controls['lastName'].hasError('required')">
-            Last name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <textarea
-            matInput
-            placeholder="Address"
-            formControlName="address"
-          ></textarea>
-          <mat-error *ngIf="shipForm.controls['address'].hasError('required')">
-            Address is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row" *ngIf="!hasUnitNumber">
-      <div class="col">
-        <button
-          mat-button
-          type="button"
-          (click)="hasUnitNumber = !hasUnitNumber"
-        >
-          + Add C/O, Apt, Suite, Unit
-        </button>
-      </div>
-    </div>
-    <div class="row" *ngIf="hasUnitNumber">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <textarea
-            matInput
-            placeholder="Address 2"
-            formControlName="address2"
-          ></textarea>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="City" formControlName="city" />
-          <mat-error *ngIf="shipForm.controls['city'].hasError('required')">
-            City is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-select placeholder="State" formControlName="state">
-            <mat-option *ngFor="let rank of ranks" [value]="rank.abbreviation">
-              {{ rank.name }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="shipForm.controls['rank'].hasError('required')">
-            State is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            #postalCode
-            maxlength="5"
-            placeholder="Postal Code"
-            type="number"
-            formControlName="postalCode"
-          />
-          <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-radio-group formControlName="shipping">
-          <mat-radio-button value="free">Free Shipping</mat-radio-button>
-          <mat-radio-button value="priority"
-            >Priority Shipping</mat-radio-button
-          >
-          <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-  </mat-card-actions>
-</mat-card>
- -->
