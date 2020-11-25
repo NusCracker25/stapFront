@@ -19,19 +19,22 @@ export class HomeComponent implements OnInit {
       url: '/ship',
       name: 'Stap Ship',
       icon: 'anchor',
-      desc: 'about ship of the line...'
+      desc: 'about ship of the line...',
+      img: './assets/img/ship_line.png'
     },
     {
       url: '/home',
       name: 'Stap Plan',
       icon: 'fact_check',
-      desc: 'A planning env'
+      desc: 'A planning env',
+      img: './assets/img/planning.png'
     },
     {
       url: '/home',
       name: 'Stap Math',
       icon: 'table_view',
-      desc: 'a mathematical design sheet with equations and variable'
+      desc: 'a mathematical design sheet with equations and variable',
+      img: './assets/img/mathboard.png'
     },
     {
       url: '/world3d',
@@ -44,31 +47,43 @@ export class HomeComponent implements OnInit {
       url: '/home',
       name: 'Stap NoCode',
       icon: 'integration_instructions',
-      desc: 'experimental no code collaborative env'
+      desc: 'experimental no code collaborative env',
+      img: './assets/img/nocode.png'
     },
     {
       url: '/home',
       name: 'Stap Mind',
       icon: 'view_carousel',
-      desc: 'A 2D mind map backed with minddb'
+      desc: 'A 2D mind map backed with minddb',
+      img: './assets/img/mindmap2d.png'
     },
     {
       url: '/home',
       name: 'Stap Mind3D',
       icon: 'language',
-      desc: 'A 3D mind map backed with minddb'
+      desc: 'A 3D mind map backed with minddb',
+      img: './assets/img/sphere.jpg'
     },
     {
       url: '/home',
       name: 'Stap Mail',
       icon: 'all_inbox',
-      desc: 'a mail box?'
+      desc: 'a mail box?',
+      img: './assets/img/mailbox.png'
+    },
+    {
+      url: '/home',
+      name: 'Stap Simulation',
+      icon: 'online_prediction',
+      desc: 'a multi agent simulation',
+      img: './assets/img/simulation.jpg'
     },
     {
       url: '/home',
       name: 'Stap Admin',
       icon: 'admin_panel_settings',
-      desc: 'a dashboard for all the crap'
+      desc: 'a dashboard for all the crap',
+      img: './assets/img/dashboard.png'
     }
   ];z
 

@@ -8,10 +8,8 @@
           routerLink="{{entry.url}}"
           routerLinkActive="router-link-active"
         >
-          <div
-            class="img"
-            style="background-image: url(./assets/img/Liste.svg);"
-          ></div>
+          <div class="img" [style.background-image]="'url(' + entry.img + ')'"></div>
+
           <h1 id="demo1">{{ entry.name }}</h1>
           <p id="demo2">{{ entry.desc }}</p>
         </a>

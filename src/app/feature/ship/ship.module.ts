@@ -20,6 +20,11 @@ import { EngineBBLComponent } from './virtual-ship/engine-bbl/engine-bbl.compone
 import { GlossaryShipComponent } from './du-monceau-sheet/glossary-ship/glossary-ship.component';
 import { ElemensArchitecture1758Component } from './du-monceau-sheet/elemens-architecture1758/elemens-architecture1758.component';
 import { DuMonceauSheetComponent } from './du-monceau-sheet/du-monceau-sheet.component';
+import { ShipsComponent } from './du-monceau-sheet/ships/ships.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   providers: [
@@ -29,7 +34,10 @@ import { DuMonceauSheetComponent } from './du-monceau-sheet/du-monceau-sheet.com
   imports: [
     CommonModule,
     ShipRoutingModule,
-    SharedModule
+    SharedModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   declarations: [
     ShipComponent,
@@ -43,7 +51,8 @@ import { DuMonceauSheetComponent } from './du-monceau-sheet/du-monceau-sheet.com
     EngineBBLComponent,
     GlossaryShipComponent,
     ElemensArchitecture1758Component,
-    DuMonceauSheetComponent
+    DuMonceauSheetComponent,
+    ShipsComponent
   ]
 
 })

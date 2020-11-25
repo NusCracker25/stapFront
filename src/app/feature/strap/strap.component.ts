@@ -79,6 +79,12 @@ export class StrapComponent implements OnInit{
     },
     {
       url: '/home',
+      name: 'Stap Simulation',
+      icon: 'online_prediction',
+      desc: 'a multi agent simulation'
+    },
+    {
+      url: '/home',
       name: 'Stap Admin',
       icon: 'admin_panel_settings',
     }

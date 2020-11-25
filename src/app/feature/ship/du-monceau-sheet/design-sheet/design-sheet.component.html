@@ -260,10 +260,11 @@
 
 <mat-card>
  <mat-card-title> <h2>General information</h2></mat-card-title>
-  <div>The length is: <b>{{this.ship.length}} m</b></div>
-  <div>The width is : <b>{{this.ship.width}} m</b></div>
-  <div>Le creux du navire est de:  <b>{{this.ship.creux}} m</b> </div>
-
+  <div>The length is: <b>{{this.ship.length | number}} m</b></div>
+  <div>The width is : <b>{{this.ship.width | number}} m</b></div>
+  <div>Le creux du navire est de:  <b>{{this.ship.creux | number}} m</b> </div>
+  <div>Delta tirant d'eau : <b>{{this.ship.deltaTirant | number}} m</b></div>
+  <div>The back uplift is : <b>{{this.ship.bwdUplift | number}} m</b></div>
   <mat-card>
     <div> <canvas>ici on pose un premier jet du dessin du navire</canvas></div>
   </mat-card>
@@ -271,16 +272,112 @@
 
   <div>She has : <b>{{this.ship.armamentGuns}}</b> guns.</div>
   <div> <b>{{this.ship.crewTotal}}</b> men are serving on board.</div>
+  <mat-card>
+    <mat-card-title> <h2>Premier pont</h2></mat-card-title>
+    <div>entrepont: : <b>{{this.ship.deck1BackwardH | number}} </b> m </div>
+  </mat-card>
+  <mat-card>
+    <mat-card-title> <h2>Deuxième pont</h2></mat-card-title>
+    <div>bordage de pont: : <b>{{this.ship.deck2BordageT | number}} </b> m </div>
+  </mat-card>
 </mat-card>
 
 <mat-card>
   <mat-card-title>Charpente</mat-card-title>
   Quille:
-  <li>Elancement: {{this.ship.elancement}} m</li>
-  <li>Quete de l'étambot: {{this.ship.queteEtambot}} m</li>
-  <li>Longueur de la quille: {{this.ship.queelL}} m</li>
-  <li>Hauteur de la quille: {{this.ship.queelH}} m</li>
-  <li>Largeur de la quille: {{this.ship.queelW}} m</li>
+  <li>Elancement: {{this.ship.elancement | number}} m</li>
+  <li>Quete de l'étambot: {{this.ship.etambotQuete | number}} m</li>
+  <li>Longueur de la quille: {{this.ship.queelL | number}} m</li>
+  <li>Hauteur de la quille: {{this.ship.queelH | number}} m</li>
+  <li>Largeur de la quille: {{this.ship.queelW | number}} m</li>
+  <li>Empature de la quille: {{this.ship.queelEmpature | number}} m</li>
+  Etrave:
+  <li>largeur de l'étrave: {{this.ship.etraveW | number}} m</li>
+  <li>hauteur de l'étrave: {{this.ship.etraveH | number}} m</li>
+  <li>epaisseur de l'étrave: {{this.ship.etraveT | number}} m</li>
+  <li>empature de l'étrave: {{this.ship.etraveEmpature | number}} m</li>
+
+  Brion:
+  <li>Hauteur du brion: {{this.ship.brionH | number}} m</li>
+  <li>Largeur du brion à la quille: {{this.ship.brionWq | number}} m</li>
+  <li>Largeur du brion à l'étrave: {{this.ship.brionWe | number}} m</li>
+
+  ContreQuille:
+  <li>Largeur de la contre-quille: {{this.ship.contreQuilleW | number}} m</li>
+  <li>Epaisseur de la contre-quille: {{this.ship.contreQuilleT | number}} m</li>
+
+  Contre-Etrave:
+  <li>Largeur de la contre-etrave: {{this.ship.contreEtraveW | number}} m</li>
+  <li>Epaisseur de la contre-etrave: {{this.ship.contreEtraveT | number}} m</li>
+
+  Etambot:
+  <li>Hauteur de l'étambot: {{this.ship.etambotH | number}} m</li>
+  <li>Quete de l'étambot: {{this.ship.etambotQuete | number}} m</li>
+  <li>Largeur de l'étambot: {{this.ship.etambotW | number}} m</li>
+  <li>Epaisseur basse de l'étambot: {{this.ship.etambotTb | number}} m</li>
+  <li>Epaisseur haute de l'étambot: {{this.ship.etambotTh | number}} m</li>
+
+  Contre-Etambot:
+  <li>largeur du contre-etambot : {{this.ship.contreEtambotEnDedansW | number}} m</li>
+  <li>epaisseur du contre-etambot au pied: {{this.ship.contreEtambotEnDedansLb | number}} m</li>
+  <li>epaisseur du contre-etambot au haut: {{this.ship.contreEtambotEnDedansLh | number}} m</li>
+
+  Courbe de l'étambot
+  <li>largeur de la courbe d'etambot : {{this.ship.courbeEtambotW | number}} m</li>
+
+  Barre du premier pont (dernier bau de l'arrière)
+  <li>largeur de la barre : {{this.ship.barrePremierPontW | number}} m</li>
+  <li>epaisseur de la barre : {{this.ship.barrePremierPontT | number}} m</li>
+  <li>bouge horizontal de la barre : {{this.ship.barrePremierPontBh | number}} m</li>
+  <li>bouge vertical de la barre : {{this.ship.barrePremierPontBv | number}} m</li>
+
+  Barre d'Arcasse:
+  <li>largeur de la barre d'arcasse : {{this.ship.barreDArcasseW | number}} m</li>
+  <li>e^paisseur de la barre d'arcasse : {{this.ship.barreDArcasseT | number}} m</li>
+  <li>bouge vertical de la barre d'arcasse : {{this.ship.barreDArcasseBv | number}} m</li>
+
+  Estain:
+  <li>largeur de l'estain: {{this.ship.estainW | number}} m</li>
+  <li>epaisseur de l'estain' : {{this.ship.estainT | number}} m</li>
+
+  Allonges de corniere
+  no design yet availble for allonge de corniere
+
+  Couple
+  no design yet available
+
+  Varangue
+  no design yet avaible for varangue
+
+  Genoux
+  no desing yet available for varangue
+
+  Allonges
+  no design yet available for allonges
+    Allonge de Revers
+    <li>epaisseur au bout d'en haut : {{this.ship.allongeDeReversTh | number}} m</li>
+
+
+  Membre (couple)
+  l'epaisseur est déterminée dans la section allonges
+  <li>epaisseur du membre : {{this.ship.membreT | number}} m</li>
+
+  Porque
+  no design yet for porques
+
+  Carlingue
+  <li>epaisseur de la carlingue : {{this.ship.carlingueT | number}} m</li>
+  <li>largeur de la carlingue : {{this.ship.carlingueW | number}} m</li>
+
+  Carlingue Mats
+  no design yet for carlingue des mats
+
+  Guirlandes
+  no design yet for guilandes
+
+  Bordage
+  no design yet for bordages
+
 </mat-card>
 
 </div>

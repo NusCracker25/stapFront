@@ -24,21 +24,60 @@ export class Ship {
 
   /* queel */
   elancement: number; // elancement de l'étrave
-  etraveH: number; // height of the etrave
-  etraveW: number;
-  etraveT: number; // thickness of the etrave
 
-  queteEtambot: number; // quete de l'étambot
-  hEtambot: number;
   queelL: number; // longueur de la quille
   deltaTirant: number; // difference de tirant d'eau
   queelH: number; // height of queel (vertical to water line)
   queelW: number; // width of queel
+  queelEmpature: number;
 
   brionH: number; // height for brion
   brionWq: number; // width when joining the queel
   brionWe: number; // height when joining the etrave
 
+  contreQuilleW: number;
+  contreQuilleT: number;
+  fausseQuilleT: number;
+  fausseQuilleW: number;
+
+  etraveEmpature: number;
+  etraveH: number; // height of the etrave
+  etraveW: number;
+  etraveT: number; // thickness of the etrave
+
+  contreEtraveW: number; // width of contre Etrave
+  contreEtraveT: number; // thickness of contre etrave
+
+  etambotQuete: number; // quete de l'étambot
+  etambotH: number;
+  etambotW: number;
+  etambotTb: number;
+  etambotTh: number;
+
+  contreEtambotEnDedansW: number;
+  contreEtambotEnDedansLb: number;
+  contreEtambotEnDedansLh: number;
+
+  courbeEtambotW: number;
+
+  barrePremierPontW: number;
+  barrePremierPontT: number;
+  barrePremierPontBh: number;
+  barrePremierPontBv: number;
+
+  barreDArcasseW: number;
+  barreDArcasseT: number;
+  barreDArcasseBv: number;
+
+  estainW: number;
+  estainT: number;
+
+  membreT: number;
+
+  carlingueT: number;
+  carlingueW : number;
+
+  allongeDeReversTh: number;
   /* artillery */
   /* 1st battery */
   armamentQuantityB1: number; // amount of guns per side
@@ -85,7 +124,7 @@ export class Ship {
   deck3BordageT: number;
 
   /* gouvernail */
-  tGouvernail: number; /* thickness of gouvernail */
+  gouvernailT: number; /* thickness of gouvernail */
 
   crewTotal: number;
 

@@ -1,18 +1,44 @@
-<mat-grid-list cols="4" rowHeight="300px">
-  <mat-grid-tile colspan="3" rowspan="1">
+<mat-grid-list cols="4" rowHeight="150px">
+  <mat-grid-tile colspan="4" rowspan="2">
     <div>
-      <h1>Stap Ship</h1>
+      <h1>Stap Ship: the history and construction of ship of the line</h1>
       <h2>is about</h2>
       <p>
         stap ship is about ship of the line in the XVIII century, how they were
-        built, drawned, designe
+        built, drawned, designed
       </p>
       <h2>is made of</h2>
       <p>stap ship is a babylon world where one navigates the ships in 3D</p>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="2">
 
+</mat-grid-list>
+
+<div class="grid;home">
+  <ul id="hexGrid">
+    <li class="hex" *ngFor="let entry of entries">
+      <div class="hexIn"  style.background="lightblue">
+        <a
+          class="hexLink"
+          href="#"
+          routerLink="{{entry.url}}"
+          routerLinkActive="router-link-active"
+          
+        >
+          <div class="img" [style.background-image]="'url(' + entry.img + ')'"></div>
+
+          <h1 id="demo1">{{ entry.name }}</h1>
+          <p id="demo2">{{ entry.desc }}</p>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+ 
+
+
+<mat-grid-list cols="4" rowHeight="150px">
+  <mat-grid-tile colspan="1" rowspan="1">
     <a
 
           href="#"
@@ -22,17 +48,20 @@
         >
         Size your ship from artillery Design from Duhamel du Monceau </a>
   </mat-grid-tile>
+  
   <mat-grid-tile colspan="1" rowspan="1">
     <a
 
     href="#"
     routerLink="./vrShip"
     routerLinkActive="router-link-active"
-  >
-   visit the 74 gun ship </a>
+    >
+    visit the 74 gun ship </a>
   </mat-grid-tile>
+  
   <mat-grid-tile colspan="1" rowspan="1">
     Glossary and terms for ships
   </mat-grid-tile>
+
 
 </mat-grid-list>

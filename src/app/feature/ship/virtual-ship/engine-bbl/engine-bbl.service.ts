@@ -17,6 +17,7 @@ import {
   Space,
   MeshBuilder,
   CubeTexture,
+  SceneLoader
 
 } from '@babylonjs/core';
 import '@babylonjs/materials';
@@ -111,8 +112,10 @@ export class EngineBBLService {
     const skyboxMaterial = new StandardMaterial('skyBox', this.scene);
     skyboxMaterial.backFaceCulling = false;
     skyboxMaterial.reflectionTexture = new CubeTexture(
-      'assets/w3d/sky/skybox4/skybox4',
-      this.scene
+      'assets/w3d/sky/sand/sand',
+      this.scene,
+      ['_px.png', '_py.png', '_pz.png', '_nx.png', '_ny.png', '_nz.png']
+
     );
     skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
     skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
@@ -139,6 +142,10 @@ export class EngineBBLService {
     this.scene.registerAfterRender(() => {
       this.sphere.rotate(new Vector3(0, 1, 0), 0.02, Space.LOCAL);
     });
+
+// add a gltf
+    SceneLoader.Append('./', 'assets/w3d/objects/test.gltf', this.scene);
+
 
     this.drawQueel();
   }
