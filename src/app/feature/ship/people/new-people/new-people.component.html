@@ -1,0 +1,52 @@
+<form [formGroup]="peopleForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Ajout d'une nouvelle personne</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First name" formControlName="first_name">
+            <mat-error *ngIf="peopleForm.controls['first_name'].hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last name" formControlName="last_name">
+            <mat-error *ngIf="peopleForm.controls['last_name'].hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="birth" formControlName="birth">
+            <mat-datepicker-toggle matSuffix [for]="birth"></mat-datepicker-toggle>
+            <mat-datepicker #birth startView="year" [startAt]="startDate"></mat-datepicker>
+            <mat-error *ngIf="peopleForm.controls['birth'].hasError('required')">
+              Birth is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Date of Death</mat-label>
+            <input matInput [matDatepicker]="death" formControlName="death">
+            <mat-datepicker-toggle matSuffix [for]="death"></mat-datepicker-toggle>
+            <mat-datepicker #death startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="secondary" (click)="onCancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -24,6 +24,28 @@ import { ShipsComponent } from './du-monceau-sheet/ships/ships.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { NewPeopleComponent } from './people/new-people/new-people.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PeopleOverviewComponent } from './people/people-overview/people-overview.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BookOverviewComponent } from './bibliography/book-overview/book-overview.component';
+import { NewBookComponent } from './bibliography/new-book/new-book.component';
+import { NewTermComponent } from './glossary/new-term/new-term.component';
+import { TermOverviewComponent } from './glossary/term-overview/term-overview.component';
+import { TermTableComponent } from './glossary/term-table/term-table.component';
+import { ShipTableComponent } from './harbor/ship-table/ship-table.component';
+import { ShipOverviewComponent } from './harbor/ship-overview/ship-overview.component';
+import { NewShipComponent } from './harbor/new-ship/new-ship.component';
+import { AllPeopleComponent } from './people/all-people/all-people.component';
+import { PeopleIdComponent } from './people/people-id/people-id.component';
 
 
 @NgModule({
@@ -37,7 +59,17 @@ import { MatSortModule } from '@angular/material/sort';
     SharedModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule
   ],
   declarations: [
     ShipComponent,
@@ -52,7 +84,19 @@ import { MatSortModule } from '@angular/material/sort';
     GlossaryShipComponent,
     ElemensArchitecture1758Component,
     DuMonceauSheetComponent,
-    ShipsComponent
+    ShipsComponent,
+    NewPeopleComponent,
+    PeopleOverviewComponent,
+    BookOverviewComponent,
+    NewBookComponent,
+    NewTermComponent,
+    TermOverviewComponent,
+    TermTableComponent,
+    ShipTableComponent,
+    ShipOverviewComponent,
+    NewShipComponent,
+    AllPeopleComponent,
+    PeopleIdComponent
   ]
 
 })

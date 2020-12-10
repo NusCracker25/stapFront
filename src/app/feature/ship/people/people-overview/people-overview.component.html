@@ -1,0 +1,36 @@
+<div class="grid-container">
+  <h1 class="mat-h1">People Dashboard
+  <span><button
+      mat-icon-button
+      aria-label="Add"
+      [routerLink]="['../add_people']"
+      routerLinkActive="router-link-active">
+    <mat-icon>add</mat-icon>
+  </button></span></h1>
+  <div>has {{this.peopleCount}} registered persons </div>
+
+  <mat-grid-list cols="3" rowHeight="350px">
+    <mat-grid-tile *ngFor="let people of peoples | async" colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{people.first_name}} {{people.last_name}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)='expand(people.id)'>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            birth: {{people.birth | date:'fullDate'}}
+            death: {{people.death | date:'fullDate'}}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

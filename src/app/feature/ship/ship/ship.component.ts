@@ -10,39 +10,39 @@ export class ShipComponent implements OnInit {
 
 entries = [
     {
-      url: '/todo',
+      url: './people',
       name: 'People',
       icon: 'assignment',
       desc: 'the people of marine',
-      img: './assets/img/ship_line.png'
+      img: './assets/img/people/Henri_Louis_Duhamel_du_Monceau.jpg'
     },
     {
-      url: '/ship',
+      url: './harbor',
       name: 'Ships',
       icon: 'anchor',
       desc: 'the ships and their history',
-      img: './assets/img/ship_line.png'
+      img: './assets/img/ship_status.jpg'
     },
     {
-      url: '/home',
+      url: './bibliography',
       name: 'Books',
       icon: 'fact_check',
       desc: 'the reference books',
-      img: './assets/img/ship_line.png'
+      img: './assets/img/books-cover.jpg'
     },
     {
-      url: '/home',
+      url: './glossary',
       name: 'Glossary',
       icon: 'fact_check',
       desc: 'the glossary of ship of the line',
-      img: './assets/img/ship_line.png'
+      img: './assets/img/mast.jpeg'
     },
     {
       url: './duMonceauSheet',
       name: 'DHM 1758',
       icon: 'fact_check',
       desc: 'sizing the ship from Elements de la construction navale',
-      img: './assets/img/ship_line.png'
+      img: './assets/img/DHM_1758.png'
     },
     {
       url: './vrShip',

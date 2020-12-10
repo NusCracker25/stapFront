@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       desc: 'a dashboard for all the crap',
       img: './assets/img/dashboard.png'
     }
-  ];z
+  ];
 
   constructor() { }
 
