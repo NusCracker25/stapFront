@@ -10,14 +10,14 @@ import { NewPeople } from '../../data/api/models';
 @Component({
   selector: 'stap-new-people',
   templateUrl: './new-people.component.html',
-  styleUrls: ['./new-people.component.css']
+  styleUrls: ['./new-people.component.scss']
 })
 export class NewPeopleComponent implements OnInit{
 
   peopleForm: FormGroup;
   startDate = new Date(1750, 0, 1);
 
-people: NewPeople;
+  people: NewPeople;
 
   constructor(
     private fb: FormBuilder,
@@ -32,9 +32,6 @@ people: NewPeople;
    */
   ngOnInit(){
     this.createForm();
-    this.logger.info('Activated route: ', this.activatedR);
-    this.logger.info('parent of Activated route: ', this.activatedR.parent);
-    
   }
 
   /**

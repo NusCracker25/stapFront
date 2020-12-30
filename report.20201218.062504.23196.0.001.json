@@ -1,0 +1,479 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201218.062504.23196.0.001.json",
+    "dumpEventTime": "2020-12-18T06:25:04Z",
+    "dumpEventTimeStamp": "1608269104047",
+    "processId": 23196,
+    "cwd": "C:\\_DATA\\STAPPLES\\stapmean\\stapFront\\stapler",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\lallain\\AppData\\Roaming\\npm/node_modules/@angular/cli/bin/ng",
+      "s"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Enterprise",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 15091500,
+        "nice": 0,
+        "sys": 23105765,
+        "idle": 327340093,
+        "irq": 6452500
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 6667484,
+        "nice": 0,
+        "sys": 7421953,
+        "idle": 351447609,
+        "irq": 917171
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 22093359,
+        "nice": 0,
+        "sys": 10838234,
+        "idle": 332605468,
+        "irq": 182906
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 11089281,
+        "nice": 0,
+        "sys": 5867843,
+        "idle": 348579937,
+        "irq": 88671
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 15917531,
+        "nice": 0,
+        "sys": 10188109,
+        "idle": 339431421,
+        "irq": 168921
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 8041281,
+        "nice": 0,
+        "sys": 5196796,
+        "idle": 352298984,
+        "irq": 103265
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 13625359,
+        "nice": 0,
+        "sys": 7317218,
+        "idle": 344594468,
+        "irq": 140765
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 7106281,
+        "nice": 0,
+        "sys": 5796421,
+        "idle": 352634343,
+        "irq": 146984
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 12222343,
+        "nice": 0,
+        "sys": 8963281,
+        "idle": 344351421,
+        "irq": 170359
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 7392093,
+        "nice": 0,
+        "sys": 4792984,
+        "idle": 353351968,
+        "irq": 100937
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 12181453,
+        "nice": 0,
+        "sys": 8828812,
+        "idle": 344526781,
+        "irq": 185609
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 7574734,
+        "nice": 0,
+        "sys": 4631656,
+        "idle": 353330656,
+        "irq": 75656
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "fc:77:74:22:57:6d",
+        "address": "192.168.1.38",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Umbrella",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "100.122.145.39",
+        "netmask": "255.255.255.255",
+        "family": "IPv4"
+      },
+      {
+        "name": "vEthernet (Default Switch)",
+        "internal": false,
+        "mac": "00:15:5d:e7:b6:91",
+        "address": "172.17.117.97",
+        "netmask": "255.255.255.240",
+        "family": "IPv4"
+      }
+    ],
+    "host": "VLBLALLAIN1"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff662af1759",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff662af5b7c",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28316"
+    },
+    {
+      "pc": "0x00007ff662af4b38",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24152"
+    },
+    {
+      "pc": "0x00007ff662be433b",
+      "symbol": "v8::base::CPU::has_sse+37723"
+    },
+    {
+      "pc": "0x00007ff6633e8c5e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff6633d0ca1",
+      "symbol": "v8::SharedArrayBuffer::Externalize+833"
+    },
+    {
+      "pc": "0x00007ff66329e56c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff6632a9910",
+      "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
+    },
+    {
+      "pc": "0x00007ff6632a6444",
+      "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
+    },
+    {
+      "pc": "0x00007ff66329bcd3",
+      "symbol": "v8::internal::Heap::CollectGarbage+1283"
+    },
+    {
+      "pc": "0x00007ff66329a4a4",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2356"
+    },
+    {
+      "pc": "0x00007ff6632bb775",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff663027a49",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+4057"
+    },
+    {
+      "pc": "0x00007ff66381463d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
+    },
+    {
+      "pc": "0x0000020f622a5683",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2177302528,
+    "totalCommittedMemory": 2177302528,
+    "usedMemory": 1936377840,
+    "availableMemory": 87042912,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 33554432,
+        "capacity": 16759808,
+        "used": 1937312,
+        "available": 14822496
+      },
+      "old_space": {
+        "memorySize": 1883877376,
+        "committedMemory": 1883877376,
+        "capacity": 1744010512,
+        "used": 1709292248,
+        "available": 34718264
+      },
+      "code_space": {
+        "memorySize": 6979584,
+        "committedMemory": 6979584,
+        "capacity": 6041056,
+        "used": 6041056,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 53219328,
+        "committedMemory": 53219328,
+        "capacity": 20106480,
+        "used": 20106480,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 198787072,
+        "committedMemory": 198787072,
+        "capacity": 198418048,
+        "used": 198418048,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550400,
+        "used": 550400,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16759808,
+        "used": 0,
+        "available": 16759808
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 168.375,
+    "kernelCpuSeconds": 13.781,
+    "cpuConsumptionPercent": 87.156,
+    "maxRss": 3162202112,
+    "pageFaults": {
+      "IORequired": 1553813,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 9422,
+      "writes": 11
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANSYS201_DIR": "C:\\Program Files\\ANSYS Inc\\v201\\ANSYS",
+    "ANSYSCL211_DIR": "C:\\_BUILDS\\Licensing\\licensingclient",
+    "ANSYSLIC_DIR": "C:\\Program Files\\ANSYS Inc\\Shared Files\\Licensing",
+    "ANSYSLMD_LICENSE_FILE": "1055@VLBLALLAIN1",
+    "ANSYS_SYSDIR": "winx64",
+    "ANS_OLD_ATTACH": "1",
+    "APPDATA": "C:\\Users\\lallain\\AppData\\Roaming",
+    "AWP_ROOT201": "C:\\Program Files\\ANSYS Inc\\v201",
+    "BROWSERSLIST_IGNORE_OLD_DATA": "1",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_26412_XITLOQJSHODJAFEH",
+    "COLORTERM": "truecolor",
+    "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "VLBLALLAIN1",
+    "COMSPEC": "C:\\windows\\system32\\cmd.exe",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132236370671165210",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "EXEPATH": "C:\\Program Files\\Git\\bin",
+    "GIT_ASKPASS": "c:\\Users\\lallain\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "HOME": "C:\\Users\\lallain",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\lallain",
+    "LANG": "en_US.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\lallain\\AppData\\Local",
+    "LOGONSERVER": "\\\\VLBDC1",
+    "MSYSTEM": "MINGW64",
+    "NUMBER_OF_PROCESSORS": "12",
+    "OLDPWD": "C:/_DATA/STAPPLES",
+    "OPTIS_APPLICATION_DATA_PATH": "C:\\_BUILDS\\Licensing\\Program",
+    "OPTIS_RESOURCES_PATH": "C:\\_BUILDS\\Licensing\\Resources",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "OneDrive": "C:\\Users\\lallain\\OneDrive - ANSYS, Inc",
+    "OneDriveCommercial": "C:\\Users\\lallain\\OneDrive - ANSYS, Inc",
+    "PATH": "C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\lallain\\bin;C:\\Python27;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0;C:\\windows\\System32\\OpenSSH;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\nodejs;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Users\\lallain\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\lallain\\AppData\\Roaming\\npm;C:\\Users\\lallain\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\_DATA\\flutter\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PLINK_PROTOCOL": "ssh",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "9e0a",
+    "PROGRAMFILES": "C:\\Program Files",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PWD": "C:/_DATA/STAPPLES/stapmean/stapFront/stapler",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "SESSIONNAME": "Console",
+    "SHLVL": "2",
+    "SPACECLAIM_PATH": "C:\\Program Files\\ANSYS Inc\\v201\\scdm",
+    "SPEOSSC_BIN_PATH": "C:\\Program Files\\ANSYS inc\\v201\\Optical Products\\SPEOS\\Bin",
+    "STUDIO_PATH": "C:\\ANSYS",
+    "SYSTEMDRIVE": "C:",
+    "SYSTEMROOT": "C:\\windows",
+    "TEMP": "C:\\Users\\lallain\\AppData\\Local\\Temp",
+    "TERM": "xterm-256color",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.52.1",
+    "TMP": "C:\\Users\\lallain\\AppData\\Local\\Temp",
+    "UATDATA": "C:\\windows\\CCM\\UATData\\D9F8C395-CAB8-491d-B8AC-179A1FE1BE77",
+    "USERDNSDOMAIN": "WIN.ANSYS.COM",
+    "USERDOMAIN": "ANSYS",
+    "USERDOMAIN_ROAMINGPROFILE": "ANSYS",
+    "USERNAME": "lallain",
+    "USERPROFILE": "C:\\Users\\lallain",
+    "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\lallain\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
+    "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\lallain\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-545ab88dbb-sock",
+    "WEBPACK_DEV_SERVER": "true",
+    "WINDIR": "C:\\windows",
+    "_": "C:/Program Files/nodejs/node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\windows\\SYSTEM32\\ntdll.dll",
+    "C:\\windows\\System32\\KERNEL32.DLL",
+    "C:\\windows\\System32\\KERNELBASE.dll",
+    "C:\\windows\\System32\\WS2_32.dll",
+    "C:\\windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\windows\\System32\\RPCRT4.dll",
+    "C:\\windows\\System32\\ucrtbase.dll",
+    "C:\\windows\\System32\\ADVAPI32.dll",
+    "C:\\windows\\System32\\msvcrt.dll",
+    "C:\\windows\\System32\\sechost.dll",
+    "C:\\windows\\System32\\USER32.dll",
+    "C:\\windows\\System32\\win32u.dll",
+    "C:\\windows\\System32\\GDI32.dll",
+    "C:\\windows\\System32\\gdi32full.dll",
+    "C:\\windows\\System32\\msvcp_win.dll",
+    "C:\\windows\\System32\\PSAPI.DLL",
+    "C:\\windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\windows\\System32\\CRYPT32.dll",
+    "C:\\windows\\SYSTEM32\\USERENV.dll",
+    "C:\\windows\\System32\\MSASN1.dll",
+    "C:\\windows\\System32\\profapi.dll",
+    "C:\\windows\\System32\\bcrypt.dll",
+    "C:\\windows\\SYSTEM32\\WINMM.dll",
+    "C:\\windows\\SYSTEM32\\winmmbase.dll",
+    "C:\\windows\\System32\\cfgmgr32.dll",
+    "C:\\windows\\System32\\bcryptPrimitives.dll",
+    "C:\\windows\\System32\\IMM32.DLL",
+    "C:\\windows\\System32\\powrprof.dll",
+    "C:\\windows\\System32\\UMPDC.dll",
+    "C:\\windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\windows\\system32\\uxtheme.dll",
+    "C:\\windows\\System32\\combase.dll",
+    "C:\\windows\\system32\\mswsock.dll",
+    "C:\\windows\\System32\\kernel.appcore.dll",
+    "C:\\windows\\System32\\NSI.dll",
+    "C:\\windows\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\windows\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\windows\\System32\\fwpuclnt.dll",
+    "C:\\windows\\system32\\napinsp.dll",
+    "C:\\windows\\system32\\pnrpnsp.dll",
+    "C:\\windows\\System32\\winrnr.dll",
+    "C:\\windows\\system32\\NLAapi.dll",
+    "C:\\windows\\system32\\wshbth.dll"
+  ]
+}

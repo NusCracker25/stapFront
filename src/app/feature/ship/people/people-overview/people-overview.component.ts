@@ -12,7 +12,7 @@ import { PeopleWithRelations } from '../../data/api/models';
 @Component({
   selector: 'stap-people-overview',
   templateUrl: './people-overview.component.html',
-  styleUrls: ['./people-overview.component.css']
+  styleUrls: ['./people-overview.component.scss']
 })
 export class PeopleOverviewComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */

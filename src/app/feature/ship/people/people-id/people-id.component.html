@@ -1,1 +1,216 @@
-<p>people-id works!</p>
+<form [formGroup]="peopleForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="grid-container">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="Louis"
+        class="mat-h1"
+        formControlName="first_name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="du Monceau"
+        class="mat-h1"
+        formControlName="last_name"
+      />
+    </mat-form-field>
+
+    <span>
+      <button
+        class="save"
+        mat-flat-button
+        color="primary"
+        type="submit"
+        aria-label="Save"
+        [disabled]="peopleForm.invalid"
+      >
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </span>
+
+    <mat-grid-list cols="3" rowHeight="70px">
+      <mat-grid-tile
+        colspan="1"
+        rowspan="1"
+        background="lightgreen"
+        class="card"
+      >
+        <mat-form-field class="card">
+          <mat-label>Birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="birth"
+            formControlName="birth"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="birth"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #birth
+            startView="year"
+            [startAt]="startDate"
+          ></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+        colspan="1"
+        rowspan="1"
+        background="lightgreen"
+        class="card"
+      >
+        <mat-form-field class="card">
+          <mat-label>Gender</mat-label>
+          <select matNativeControl>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+        colspan="1"
+        rowspan="4"
+        background="lightgreen"
+        class="card"
+      >
+        <mat-card class="card"> photo</mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+        colspan="1"
+        rowspan="1"
+        background="lightgreen"
+        class="card"
+      >
+        <mat-form-field class="card">
+          <mat-label>Death</mat-label>
+          <input
+            matInput
+            [matDatepicker]="death"
+            formControlName="death"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="death"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #death
+            startView="year"
+            [startAt]="startDate"
+          ></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="card" colspan="1" rowspan="1" background="green">
+        <mat-form-field class="card">
+          <mat-label>Nationality</mat-label>
+          <select matNativeControl required>
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="da">Danish</option>
+            <option value="sp">Espanol</option>
+            <option value="us">US</option>
+          </select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+        colspan="2"
+        rowspan="4"
+        background="lightgreen"
+        class="card"
+      >
+        <mat-card class="card">
+          <quill-editor [styles]="{ height: '200px', overflow: 'auto' }">
+          </quill-editor>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="5" color="primary" class="card">
+        <mat-expansion-panel class="card" expanded="true">
+          <mat-expansion-panel-header>
+            Modifications
+          </mat-expansion-panel-header>
+
+          <mat-list class="scrolling_data">
+            <mat-list-item *ngFor="let modif of modifications">
+              <mat-icon mat-list-icon>note</mat-icon>
+              <div mat-line>{{ modif.brief }}</div>
+              <div mat-line>{{ modif.updated | date }}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="4" color="primary" class="card">
+        <mat-expansion-panel class="card">
+          <mat-expansion-panel-header> Books </mat-expansion-panel-header>
+
+          <mat-list class="scrolling_data">
+            <mat-list-item *ngFor="let book of books">
+              <mat-icon mat-list-icon>book</mat-icon>
+              <div mat-line>{{ book.title }}</div>
+            </mat-list-item>
+          </mat-list>
+          <mat-action-row>
+            <button mat-icon-button aria-label="Add">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1" rowspan="5" color="primary" class="card">
+        <mat-expansion-panel class="card">
+          <mat-expansion-panel-header> Ships </mat-expansion-panel-header>
+
+          <mat-list class="scrolling_data">
+            <mat-list-item *ngFor="let ship of ships">
+              <mat-icon mat-list-icon>ship</mat-icon>
+              <div mat-line>{{ ship.name }}</div>
+            </mat-list-item>
+          </mat-list>
+          <mat-action-row>
+            <mat-form-field class="example-full-width">
+              <input
+                type="text"
+                placeholder="Name a ship"
+                aria-label="Number"
+                matInput
+                formControlName="shipAddControl"
+                [matAutocomplete]="ship"
+                (keyup.enter)="addOption()"
+              />
+              <mat-autocomplete
+                autoActiveFirstOption
+                #ship="matAutocomplete"
+                [displayWith]="displayShipFn"
+                (optionSelected)="optionSelected($event.option)"
+              >
+                <mat-option
+                  *ngFor="let ship of shipsOptions | async"
+                  [value]="ship"
+                >
+                  {{ ship.name }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <button mat-icon-button aria-label="Add" (click)="onAddShip()">
+              <mat-icon>add</mat-icon>
+            </button>
+
+             <button *ngIf="showAddButton && shipAddControl.value" matSuffix mat-button mat-icon-button (click)="addOption()"><mat-icon matTooltip='Add "{{shipAddControl.value}}"'>print</mat-icon></button>
+
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</form>

@@ -1,5 +1,13 @@
+import { NGXLogger } from 'ngx-logger';
+import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NewBook } from './../../data/api/models/new-book';
+import { BookControllerService } from './../../data/api/services/book-controller.service';
+import { PeopleControllerService } from './../../data/api/services/people-controller.service';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { PeopleWithRelations } from '../../data/api/models';
 
 @Component({
   selector: 'stap-new-book',
@@ -7,87 +15,69 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./new-book.component.css']
 })
 export class NewBookComponent {
-  addressForm = this.fb.group({
-    company: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
-  });
 
-  hasUnitNumber = false;
 
-  states = [
-    {name: 'Alabama', abbreviation: 'AL'},
-    {name: 'Alaska', abbreviation: 'AK'},
-    {name: 'American Samoa', abbreviation: 'AS'},
-    {name: 'Arizona', abbreviation: 'AZ'},
-    {name: 'Arkansas', abbreviation: 'AR'},
-    {name: 'California', abbreviation: 'CA'},
-    {name: 'Colorado', abbreviation: 'CO'},
-    {name: 'Connecticut', abbreviation: 'CT'},
-    {name: 'Delaware', abbreviation: 'DE'},
-    {name: 'District Of Columbia', abbreviation: 'DC'},
-    {name: 'Federated States Of Micronesia', abbreviation: 'FM'},
-    {name: 'Florida', abbreviation: 'FL'},
-    {name: 'Georgia', abbreviation: 'GA'},
-    {name: 'Guam', abbreviation: 'GU'},
-    {name: 'Hawaii', abbreviation: 'HI'},
-    {name: 'Idaho', abbreviation: 'ID'},
-    {name: 'Illinois', abbreviation: 'IL'},
-    {name: 'Indiana', abbreviation: 'IN'},
-    {name: 'Iowa', abbreviation: 'IA'},
-    {name: 'Kansas', abbreviation: 'KS'},
-    {name: 'Kentucky', abbreviation: 'KY'},
-    {name: 'Louisiana', abbreviation: 'LA'},
-    {name: 'Maine', abbreviation: 'ME'},
-    {name: 'Marshall Islands', abbreviation: 'MH'},
-    {name: 'Maryland', abbreviation: 'MD'},
-    {name: 'Massachusetts', abbreviation: 'MA'},
-    {name: 'Michigan', abbreviation: 'MI'},
-    {name: 'Minnesota', abbreviation: 'MN'},
-    {name: 'Mississippi', abbreviation: 'MS'},
-    {name: 'Missouri', abbreviation: 'MO'},
-    {name: 'Montana', abbreviation: 'MT'},
-    {name: 'Nebraska', abbreviation: 'NE'},
-    {name: 'Nevada', abbreviation: 'NV'},
-    {name: 'New Hampshire', abbreviation: 'NH'},
-    {name: 'New Jersey', abbreviation: 'NJ'},
-    {name: 'New Mexico', abbreviation: 'NM'},
-    {name: 'New York', abbreviation: 'NY'},
-    {name: 'North Carolina', abbreviation: 'NC'},
-    {name: 'North Dakota', abbreviation: 'ND'},
-    {name: 'Northern Mariana Islands', abbreviation: 'MP'},
-    {name: 'Ohio', abbreviation: 'OH'},
-    {name: 'Oklahoma', abbreviation: 'OK'},
-    {name: 'Oregon', abbreviation: 'OR'},
-    {name: 'Palau', abbreviation: 'PW'},
-    {name: 'Pennsylvania', abbreviation: 'PA'},
-    {name: 'Puerto Rico', abbreviation: 'PR'},
-    {name: 'Rhode Island', abbreviation: 'RI'},
-    {name: 'South Carolina', abbreviation: 'SC'},
-    {name: 'South Dakota', abbreviation: 'SD'},
-    {name: 'Tennessee', abbreviation: 'TN'},
-    {name: 'Texas', abbreviation: 'TX'},
-    {name: 'Utah', abbreviation: 'UT'},
-    {name: 'Vermont', abbreviation: 'VT'},
-    {name: 'Virgin Islands', abbreviation: 'VI'},
-    {name: 'Virginia', abbreviation: 'VA'},
-    {name: 'Washington', abbreviation: 'WA'},
-    {name: 'West Virginia', abbreviation: 'WV'},
-    {name: 'Wisconsin', abbreviation: 'WI'},
-    {name: 'Wyoming', abbreviation: 'WY'}
-  ];
+  bookForm: FormGroup;
+  startDate = new Date(1750, 0, 1);
 
-  constructor(private fb: FormBuilder) {}
+  book: NewBook;
 
-  onSubmit() {
-    alert('Thanks!');
+  authorList: Observable<PeopleWithRelations[]>;
+
+  languageList: string[] = ['Français', 'English', 'Italiano', 'Dutch'];
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private activatedR: ActivatedRoute,
+    private peopleService: PeopleControllerService,
+    private bookService: BookControllerService,
+    private logger: NGXLogger,
+    private snackBar: MatSnackBar) {}
+
+      /**
+   * initial creation of form;
+   */
+  ngOnInit(){
+    this.createForm();
+    this.getAuthorList();
   }
+
+  getAuthorList(): void{
+      this.authorList = this.peopleService.find();
+  }
+    /**
+   * creates the form
+   */
+  createForm(){
+    this.bookForm = this.fb.group({
+      title: [null, Validators.required],
+      publication: [null, Validators.required],
+      language: [null, Validators.required],
+      author: [null, Validators.required]
+    });
+  }
+
+    onSubmit() {
+     // this.book = this.bookForm.value;
+     this.book = {
+       "title":this.bookForm.get('title').value,
+       "publication" : this.bookForm.get('publication').value
+     };
+      const post = {body: this.book };
+      this.bookService.create(post).subscribe( (res) =>  {
+          this.bookForm.reset();
+this.logger.info('Request result ', res);         
+          this.snackBar.open('New book registered ', res.title, {
+            duration: 3000
+          });
+
+          this.router.navigate(['add_book'], { relativeTo: this.activatedR.parent });
+
+      });
+    }
+
+    onCancel(){
+      this.router.navigate(['bibliography'], { relativeTo: this.activatedR.parent });
+    }
 }

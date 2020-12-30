@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoggerModule , NgxLoggerLevel } from 'ngx-logger';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoggerModule , NgxLoggerLevel } from 'ngx-logger';
                            disableConsoleLogging: false,
                            colorScheme: ['purple', 'teal', 'gray', 'gray', 'red', 'red', 'red']
 
-                        })
+                        }),
+    QuillModule.forRoot()    
   ],
   exports: [
     RouterModule,
@@ -36,7 +38,8 @@ import { LoggerModule , NgxLoggerLevel } from 'ngx-logger';
     MaterialModule,
     HttpClientModule,
     LayoutModule,
-    LoggerModule
+    LoggerModule,
+    QuillModule
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,4 @@
+import { NewBookComponent } from './bibliography/new-book/new-book.component';
 import { PeopleIdComponent } from './people/people-id/people-id.component';
 import { NewShipComponent } from './harbor/new-ship/new-ship.component';
 
@@ -18,13 +19,32 @@ const routes: Routes = [
   { path: '', component: ShipComponent },
   { path: 'duMonceauSheet', component: DuMonceauSheetComponent },
   { path: 'vrShip', component: VirtualShipComponent },
+  // ships
   { path: 'harbor', component: ShipOverviewComponent },
+  {
+    path: 'ship/:id',
+    component: PeopleIdComponent
+  },
+  { path: 'add_ship', component: NewShipComponent },
+  //people
   { path: 'people', component: PeopleOverviewComponent },
   { path: 'add_people', component: NewPeopleComponent },
-  { path: 'glossary', component: TermOverviewComponent },
-  { path: 'add_ship', component: NewShipComponent },
   {
     path: 'people/:id',
+    component: PeopleIdComponent
+  },
+  // terminology
+  {
+    path: 'term/:id',
+    component: PeopleIdComponent
+  },
+  { path: 'glossary', component: TermOverviewComponent },
+  { path: 'add_term', component: NewShipComponent },
+
+  // books
+  { path: 'add_book', component: NewBookComponent },
+  {
+    path: 'book/:id',
     component: PeopleIdComponent
   },
   { path: 'bibliography', component: BookOverviewComponent }
